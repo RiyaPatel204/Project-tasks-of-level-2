@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+  body {
+  font-family: Calisto MT;
+  background-color: #f0f2f5;
+  padding: 40px; 
+}
+
+.container {
+  max-width: 700px;
+  margin: auto;
+  background: url("https://wherecharliewanders.com/wp-content/uploads/2025/05/boats_betio_south_tarawa_kiribati.jpg");
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+}
+
+h1, h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+form {
+  display: flex;
+  margin-bottom: 180px;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 14px;
+  font-size: 18px;
+  line-height: 1.1;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 14px 25px;
+  margin-left: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  border: none;
+  background-color: black;
+  color: white;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background: #f9f9f9;
+  margin: 12px 0;
+  padding: 20px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.task-info {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.task-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.task-buttons button {
+  margin-left: 0;
+  padding: 10px 14px;
+  font-size: 14px;
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.task-buttons button:hover {
+  background-color: #495057;
+}
+
+
+  </style>
+  <title>To-Do list</title>
+  
+</head>
+<body>
+  <div class="container">
+    <h1><b>📝<u> To-Do List</u></b></h1>
+
+    <form id="task-form">
+      <input type="text" id="task-input" placeholder="Add new task..." required />
+      <button type="submit">Add Task</button>
+    </form>
+
+    <div class="section">
+      <h2>Pending Tasks</h2>
+      <ul id="pending-tasks"></ul>
+    </div>
+
+    <div class="section">
+      <h2>Completed Tasks</h2>
+      <ul id="completed-tasks"></ul>
+    </div>
+  </div>
+
+  <script>
+    const taskForm = document.getElementById('task-form');
+const taskInput = document.getElementById('task-input');
+const pendingList = document.getElementById('pending-tasks');
+const completedList = document.getElementById('completed-tasks');
+
+let tasks = [];
+
+taskForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const text = taskInput.value.trim();
+  if (text) {
+    const task = {
+      id: Date.now(),
+      text,
+      createdAt: new Date(),
+      completed: false,
+      completedAt: null
+    };
+    tasks.push(task);
+    taskInput.value = '';
+    renderTasks();
+  }
+});
+
+function renderTasks() {
+  pendingList.innerHTML = '';
+  completedList.innerHTML = '';
+
+  tasks.forEach(task => {
+    const li = document.createElement('li');
+    const info = document.createElement('div');
+    info.className = 'task-info';
+    info.innerHTML = `
+      <strong>${task.text}</strong><br>
+      <small>Created: ${task.createdAt.toLocaleString()}</small>
+      ${task.completed ? `<br><small>Completed: ${task.completedAt.toLocaleString()}</small>` : ''}
+    `;
+
+    const buttons = document.createElement('div');
+    buttons.className = 'task-buttons';
+
+    const editBtn = document.createElement('button');
+    editBtn.textContent = 'Edit';
+    editBtn.onclick = () => editTask(task.id);
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = 'Delete';
+    deleteBtn.onclick = () => deleteTask(task.id);
+
+    const toggleBtn = document.createElement('button');
+    toggleBtn.textContent = task.completed ? 'Unmark' : 'Complete';
+    toggleBtn.onclick = () => toggleComplete(task.id);
+
+    buttons.appendChild(editBtn);
+    buttons.appendChild(deleteBtn);
+    buttons.appendChild(toggleBtn);
+
+    li.appendChild(info);
+    li.appendChild(buttons);
+
+    if (task.completed) {
+      completedList.appendChild(li);
+    } else {
+      pendingList.appendChild(li);
+    }
+  });
+}
+
+function deleteTask(id) {
+  tasks = tasks.filter(task => task.id !== id);
+  renderTasks();
+}
+
+function toggleComplete(id) {
+  const task = tasks.find(t => t.id === id);
+  if (task) {
+    task.completed = !task.completed;
+    task.completedAt = task.completed ? new Date() : null;
+    renderTasks();
+  }
+}
+
+function editTask(id) {
+  const task = tasks.find(t => t.id === id);
+  const newText = prompt('Edit task:', task.text);
+  if (newText !== null) {
+    task.text = newText.trim() || task.text;
+    renderTasks();
+  }
+}
+
+  </script>
+</body>
+</html>

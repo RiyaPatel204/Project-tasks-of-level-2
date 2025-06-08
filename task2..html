@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title> Sardar Vallabhbhai Patel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --color-headline: #111111;
+      --color-body: #6b7280;
+      --color-bg: #ffffff;
+      --color-button-bg: #111111;
+      --color-button-text: #ffffff;
+      --radius: 0.75rem;
+      --shadow: rgba(0, 0, 0, 0.1);
+      --max-width: 900px;
+      --spacing-section-vertical: 4rem;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--color-bg);
+      color: var(--color-body);
+      line-height: 1.6;
+      font-size: 18px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover, a:focus {
+      text-decoration: underline;
+    }
+
+    
+
+   
+    main {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 3rem 1rem;
+    }
+
+    section {
+      margin-bottom: var(--spacing-section-vertical);
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+
+    .hero h2 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: var(--color-headline);
+      margin: 0 0 1rem 0;
+      line-height: 1.1;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      max-width: 600px;
+      margin: 0 auto 2rem auto;
+      color: var(--color-body);
+    }
+
+    .btn-primary {
+      background-color: var(--color-button-bg);
+      color: var(--color-button-text);
+      padding: 0.75rem 2rem;
+      border: none;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 1.111rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      display: inline-block;
+      text-align: center;
+      user-select: none;
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus {
+      background-color: #333333;
+      transform: scale(1.05);
+      outline: none;
+    }
+
+    /* Image Section */
+    .image-section {
+      text-align: center;
+    }
+
+    .image-section img {
+      width: 1000px;
+      max-width: 100%;
+      border-radius: var(--radius);
+      box-shadow: 0 10px 20px var(--shadow);
+      object-fit: cover;
+    }
+
+    /* Biography */
+    .biography {
+      background: #f9fafb;
+      border-radius: var(--radius);
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 5px 10px var(--shadow);
+      color: var(--color-body);
+    }
+
+    .biography h3 {
+      font-weight: 700;
+      font-size: 1.75rem;
+      color: var(--color-headline);
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+
+   
+    /* Quote Section */
+    .quote-section {
+      font-style: italic;
+      text-align: center;
+      color: #374151;
+      font-size: 1.25rem;
+      padding: 2rem 1rem;
+      border-left: 6px solid #111111;
+      max-width: 700px;
+      margin: 0 auto;
+      background: #fefefe;
+      border-radius: var(--radius);
+      box-shadow: 0 5px 15px var(--shadow);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.875rem;
+      color: #9ca3af;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    @media (max-width: 480px) {
+      .hero h2 {
+        font-size: 2.5rem;
+      }
+
+      .btn-primary {
+        width: 100%;
+        padding: 1rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <main>
+    <section class="hero" role="banner">
+      <h2>SARDAR VALLABHBHAI PATEL</h2>
+      <p>The Iron Man of India who united the nation and forged its unity.</p>
+      <p><b>1875-1950</b></p>
+      <a href="https://en.wikipedia.org/wiki/Vallabhbhai_Patel" target="_blank" rel="noopener" class="btn-primary" role="button" aria-label="Read more about Sardar Vallabhbhai Patel on Wikipedia">Learn More</a>
+    </section>
+
+    <section class="image-section" aria-label="Portrait of Sardar Vallabhbhai Patel">
+      <img src="https://www.thefamouspeople.com/profiles/images/og-sardar-vallabhbhai-patel-4116.jpg" alt="Portrait of Sardar Vallabhbhai Patel" />
+    </section>
+
+    <section class="biography" aria-labelledby="biography-title">
+      <h3 id="biography-title">Biography</h3>
+      <p>
+        Sardar Vallabhbhai Patel (1875–1950), also known as the "Iron Man of India," was a key figure in India’s struggle for independence and the country’s first Deputy Prime Minister and Home Minister. He played a pivotal role in integrating over 500 princely states into the Indian Union after independence, ensuring the political unity and integrity of India.
+      </p>
+    </section>
+
+    
+
+    <section class="quote-section" aria-label="Famous quote by Sardar Vallabhbhai Patel">
+      <blockquote>
+        “Manpower without Unity is not a strength unless it is harmonized and united properly, then it becomes a spiritual power.”
+      </blockquote>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2024 Tribute Page for Sardar Vallabhbhai Patel
+  </footer>
+</body>
+</html>
+
